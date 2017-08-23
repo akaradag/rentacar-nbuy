@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<header>
+    <div class=" row">
+        <div class="col-sm-4 col-sm-offset-1">
+            <h1>Rezervasyon Sorgulama</h1>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="row">
+        <div class="col-sm-4 well col-sm-offset-1">
+
+            <form action="~/ReservationCancel/Index" method="post" onsubmit="return checkform(this)">
+                <div class="form-group">
+                    <label><b>Rezervasyon No</b></label>
+                    <input type="text" name="reservation_number" class="form-control" required placeholder="Rezervasyon Numarasını Giriniz.." />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" placeholder="E-posta Adresini Giriniz.." required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <font color="#DD0000">Güvenlik Kodu</font> <span id="txtCaptchaDiv" style="color:black"></span><!– this is where the script will place the generated code –>
+                    <input type="hidden" id="txtCaptcha" class="form-control" /><!– this is where the script will place a copy of the code for validation: this is a hidden field –>
+                    <input type="text" name="txtInput" id="txtInput" size="15" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class=" form-control btn btn-danger">
+                        Gönder
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    function checkform(theform) {
+        var why = "";
+        if (theform.txtInput.value == "") {
+            why += "Güvenlik kodu boş bırakılamaz!";
+        }
+        if (theform.txtInput.value != "") {
+            if (ValidCaptcha(theform.txtInput.value) == false) {
+                why += "Güvenlik kodunu yanlış girdiniz!";
+            }
+        }
+        if (why != "") {
+            alert(why);
+            return false;
+        }
+    }
+    var a = Math.ceil(Math.random() * 9) + " ";
+    var b = Math.ceil(Math.random() * 9) + " ";
+    var c = Math.ceil(Math.random() * 9) + " ";
+    var d = Math.ceil(Math.random() * 9) + " ";
+    var e = Math.ceil(Math.random() * 9) + " ";
+    var code = a + b + c + d + e;
+    document.getElementById("txtCaptcha").value = code;
+    document.getElementById("txtCaptchaDiv").innerHTML = code;
+    function ValidCaptcha() {
+        var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+        var str2 = removeSpaces(document.getElementById('txtInput').value);
+        if (str1 == str2) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    function removeSpaces(string) {
+        return string.split('').join(" ");
+    }
+
+</script>
+</body>
+</html>

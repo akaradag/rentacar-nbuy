@@ -1,0 +1,11 @@
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\DataAccessLayer.dll
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\Entities.dll
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\Entities.pdb
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\RentACarMVC\RentACar\RentACarNeptuneWhite\BusinessLayer\obj\Debug\BusinessLayer.pdb

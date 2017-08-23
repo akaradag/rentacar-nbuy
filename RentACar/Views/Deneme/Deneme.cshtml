@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Deneme";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index</title>
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        input[type=text], input[type=password] {
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        img.login {
+            width: 30%;
+            border-radius: 20%;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 well">
+        <form action="~/Login/Index" method="post">
+            <div class="imgcontainer">
+
+                <img src="~/Assets/images.png" alt="Login" class="login" />
+            </div>
+
+            <div class="form-group">
+
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Login</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+
+
+            <div class="form-group" style="background-color:#f1f1f1">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <span class="password">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+

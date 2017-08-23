@@ -1,0 +1,82 @@
+﻿@using RentACar.Models
+@model List<CarWithInfoVM>
+
+@{
+    ViewBag.Title = "CarSelect";
+}
+
+@foreach (CarWithInfoVM item in Model)
+{
+    <div class="row car-div">
+
+        <form class="form-group" action="~/Car1/CarSelect/@item.ID" method="post">
+            <div class="col-sm-3">
+                <img src="http://i.picresize.com/images/2017/07/19/qYJ4i.jpg" />
+            </div>
+            <div class="col-sm-9">
+                <h3>@string.Format("{0} {1}", item.Brand, item.Model)</h3>
+                <input type="hidden" name="ID" value="@item.ID" />
+
+                <div class="col-sm-4">
+                    <div class="car-option">
+                        <div class="car-option-img">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        <span>@item.Fuel</span>
+                    </div>
+                    <div class="car-option">
+                        <div class="car-option-img">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        <span>@item.Capacity Kişi</span>
+                    </div>
+                    <div class="car-option">
+                        <div class="car-option-img">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        <span>@item.Color</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="car-option">
+                        <div class="car-option-img">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        <span>
+                            @item.EngineSize
+                        </span>
+                    </div>
+                    <div class="car-option">
+                        <div class="car-option-img">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        <span>
+                            @item.EnginePower
+                        </span>
+                    </div>
+                    <div class="car-option">
+                        <div class="car-option-img">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </div>
+                        <span>
+                            @item.Gear
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="car-option">
+                        <label>1 Günlük Kiralama</label>
+                        <div class="car-price">
+                            <i class="fa fa-try"></i>
+                            <span>@item.RentPrice</span>
+                        </div>
+                        <button type="submit" class="btn btn-success">Seç</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+}

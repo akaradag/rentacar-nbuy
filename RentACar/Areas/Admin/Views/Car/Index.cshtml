@@ -1,0 +1,138 @@
+﻿@using Entities
+@model Car
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Araç İşlemleri</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div Id="list">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>İsim</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody Id="myTbody">
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#car">Yeni Araba</button>
+        @* Modal *@
+        <div Id="car" class="modal" role="dialog">
+            <div class="modal-dialog">
+                @* Content *@
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Araba İşlem</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form Id="frmbrand">
+                            <div class="formbrand" style="display:none">
+                                <label for="txtId">Id</label>
+                                <input type="text" placeholder="Id" Id="txtId" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                <label for="txtName">İsim</label>
+                                <input type="text" placeholder="İsim" Id="txtName" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                <label for="txtPrice">Fiyat</label>
+                                <input type="number" placeholder="Fiyat" Id="txtPrice" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                <label for="txtCapacity">Kapasite</label>
+                                <input type="number" placeholder="Kapasite" Id="txtCapacity" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                <label for="txtPower">Motor Gücü</label>
+                                <input type="number" placeholder="Motor Gücü" Id="txtPower" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                <label for="txtSize">Motor Boyutu</label>
+                                <input type="number" placeholder="Motor Boyutu" Id="txtSize" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                @Html.LabelFor(c => c.ColorID, "Renk")
+                                @Html.DropDownListFor(c => c.ColorID, (SelectList)ViewBag.Color, new { @class = "form-control" })
+                            </div>
+
+                            <div class="formbrand">
+                                @Html.LabelFor(b => b.ID, "Marka")
+                                @Html.DropDownListFor(b => b.ID, (SelectList)ViewBag.Brand, new { onchange = "Change(this)", @class = "form-control" })
+                            </div>
+
+                            <div class="formbrand" id="Model">
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Kapat</button>
+                        <button Id="btnAdd" class="btn btn-default" onclick="Add()">Ekle</button>
+                        <button Id="btnUpdate" class="btn btn-default" onclick="Update()" style="display:none;">Güncelle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var id;
+        function Change(select) {
+            var biseyler;
+            //alert("Çalışıyor");
+
+            id = select.value;
+            console.log(id);
+            $.ajax({
+                url: "/Admin/Car/GetModels/" + id,
+                type: "get",
+                //contentType: "json",
+                dataType: "json",
+                success: function (result) {
+
+                    //ViewModel de yazılarak yapılabilir alternatif yöntem olarak
+                    var modelsContainer = $('#Model');
+                    modelsContainer.html('');
+
+                    var modelsLabel = $('<label>').attr('for', 'ModelsDropDown').text('Modeller');
+
+                    var modelsDropDown = $('<select>').attr('id', 'ModelsDropDown').addClass('form-control');
+                    
+
+                    var modelOption;
+                    for (var i = 0; i < result.length; i++) {
+
+                        modelOption = $('<option>').val(result[i].Id).text(result[i].Name);
+                        modelsDropDown.append(modelOption);
+
+                    }
+
+                    modelsContainer.append(modelsLabel);
+                    modelsContainer.append(modelsDropDown);
+                }
+
+            })
+        }
+
+
+    </script>
+</body>
+</html>
+

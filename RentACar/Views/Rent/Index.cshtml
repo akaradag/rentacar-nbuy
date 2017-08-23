@@ -1,0 +1,270 @@
+﻿@model RentACar.Models.RentVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <aside class="col-sm-12 col-md-9 col-lg-9">
+
+
+        @* Kişisel Bilgiler Paneli *@
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>Kişisel Bilgiler</h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-6">
+
+                    <div class="panel-group">
+                        <label>Ad Soyad</label>
+                        <input type="text" id="cust-name" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label>Doğum Tarihi</label>
+                        <input type="text" id="cust-birth" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label>Telefon</label>
+                        <input type="text" id="cust-phone" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label>Email</label>
+                        <input type="text" id="cust-mail" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-group">
+                        <label>TC Kimlik No</label>
+                        <input type="text" id="cust-social-number" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label>Adres</label>
+                        <textarea id="cust-address" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* Kurumsal - Bireysel Seçimi *@
+        <h2>Fatura Bilgileri</h2>
+        <div class="row" id="bill-info">
+            <div class="col-sm-3">
+                <input type="radio" id="radio-option-company" class="bill-option" name="bill" value="company" />
+                <label for="radio-option-company">Kurumsal</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="radio" id="radio-option-person" class="bill-option" name="bill" value="person" />
+                <label for="radio-option-person">Bireysel</label>
+            </div>
+        </div>
+
+        <div class="person bill panel panel-info" style="display:none;">
+            <div class="panel-heading">
+                <h2>Bireysel Fatura Bilgileri</h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-6">
+                    <div class="panel-group">
+                        <label for="bill-firstname">Ad</label>
+                        <input type="text" id="bill-firstname" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label for="bill-lastname">Soyad</label>
+                        <input type="text" id="bill-lastname" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-group">
+                        <label for="bill-country">Ülke</label>
+                        <input type="text" id="bill-country" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label for="bill-address">Adres</label>
+                        <textarea type="text" id="bill-address" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="company bill panel panel-info" style="display:none;">
+            <div class="panel-heading">
+                <h2>Kurumsal Fatura Bilgileri</h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-6">
+                    <div class="panel-group">
+                        <label for="bill-companyname">Firma Adı</label>
+                        <input type="text" id="bill-companyname" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label for="bill-tax-office">Vergi Dairesi</label>
+                        <input type="text" id="bill-tax-office" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label for="bill-tax-no">Vergi Numarası</label>
+                        <input type="text" id="bill-tax-no" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-group">
+                        <label for="bill-country">Ülke</label>
+                        <input type="text" id="bill-company-country" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label for="bill-address">Adres</label>
+                        <textarea id="bill-company-address" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* Ödeme bilgileri *@
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>Ödeme Bilgileri</h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-6">
+                    <div class="panel-group">
+                        <label for="pay-card-no">Kart Numarası</label>
+                        <input type="text" id="pay-card-no" class="form-control" />
+                    </div>
+                    <div class="panel-group">
+                        <label for="pay-card-name">Kart Üzerindeki İsim</label>
+                        <input type="text" id="pay-card-name" class="form-control" />
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel-group">
+                                <label for="pay-card-expiry">Son Kullanma Tarihi</label>
+                                <input type="text" id="pay-card-expiry" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel-group">
+                                <label for="pay-card-cvc">CVC Güvenlik Kodu</label>
+                                <input type="text" id="pay-card-cvc" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <label><input type="checkbox" id="rent-agreement" /><a> Kiralama Sözleşmesi</a>'ni okudum, kabul ediyorum.</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="img-box">
+                        <img src="http://www.krediix.com/wp-content/uploads/2015/12/kredi-kart%C4%B1-cvc2-kodu.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-success" onclick="AddBill()">Onayla</button>
+                <div id="alert-area" class="alert" style="display:none">
+
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    @* Kira Bilgileri  *@
+    <aside class="col-sm-12 col-md-3 col-lg-3">
+        <div class="panel panel-success rent-info">
+            <div class="panel-heading">
+                <h2>Kira Bilgileri</h2>
+            </div>
+            <div class="panel-body">
+                <input type="hidden" id="car-id" value="@Model.CarId" />
+                <input type="hidden" id="customer-id" value="@Model.CustomerId" />
+                <input type="hidden" id="total-price" value="@Model.TotalPrice" />
+                <div class="panel-group">
+                    <label>Alış: @Model.StartDate.ToShortDateString()</label>
+                </div>
+                <div class="panel-group">
+                    <label>Teslim: @Model.EndDate.ToShortDateString()</label>
+                </div>
+                <div class="panel-group">
+                    <label>Toplam Kira Bedeli: <i class="fa fa-try"></i> @Model.TotalPrice</label>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+@section rent_indexScript{
+<script src="~/Scripts/jquery.min.js"></script>
+    <script>
+        $("document").ready(function () {
+            $('.bill-option').click(function () {
+                var clickedValue = $(this).attr("value");
+                var targetDiv = $('.' + clickedValue);
+                targetDiv.show();
+                $('.bill').not(targetDiv).hide();
+            })
+        }
+            );
+
+        function AddBill() {
+
+            var radioValue=false;
+            
+            if ($('#radio-option-person').is(':checked')) {
+                radioValue = true;
+            }
+
+            $.ajax({
+                url: "/Rent/RentConfirmed",
+                type: "post",
+                data: {
+                    CustomerName: $("#cust-name").val(),
+                    CustomerBirth: $("#cust-birth").val(),
+                    CustomerPhone: $("#cust-phone").val(),
+                    CustomerMail: $("#cust-mail").val(),
+                    CustomerSocialNum: $("#cust-social-number").val(),
+                    CustomerAddress: $("#cust-address").val(),
+                    BillFirstName: $("#bill-firstname").val(),
+                    BillLastName: $("#bill-lastname").val(),
+                    BillAddress: $("#bill-address").val(),
+                    BillCountry: $("#bill-country").val(),
+                    BillCompanyName: $("#bill-companyname").val(),
+                    BillTaxOffice: $("#bill-tax-office").val(),
+                    BillTaxNo: $("#bill-tax-no").val(),
+                    BillCompanyCountry: $("#bill-company-country").val(),
+                    BillCompanyAddress: $("#bill-company-address").val(),
+                    PayCardNo: $("#pay-card-no").val(),
+                    PayCardName: $("#pay-card-name").val(),
+                    PayCardExpiry: $("#pay-card-expiry").val(),
+                    PayCardCVC: $("#pay-card-cvc").val(),
+                    IsPersonalBill: radioValue,
+                    CarId: $("#car-id").val(),
+                    CustomerId: $("#customer-id").val(),
+                    TotalPrice: $("#total-price").val()
+                },
+                //contentType: "application/json",
+                dataType: "text/html",
+                success: function (response) {
+
+                    // Eğer sunucudan HTML döndürülürse
+                    //$('#message_area').html(response);
+
+                    // Eğer sunucudan JSON döndürülürse
+                    var responseObject = JSON.parse(response);
+                    $('#alert-area').html(responseObject);
+                    $('#alert-area').addClass('alert-success');
+                    $('#alert-area').show();
+
+                    alert("başarılı");
+                },
+                error: function (response) {
+                    var responseObject = JSON.parse(response);
+                    $('#alert-area').html(responseObject);
+                    $('#alert-area').addClass('alert-warning');
+                    $('#alert-area').show();
+
+                    alert("hata");
+                }
+
+            })
+        };
+
+
+    </script>
+}

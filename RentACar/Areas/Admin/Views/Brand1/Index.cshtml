@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Marka İşlemleri</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+   
+</head>
+<body>
+    <div class="container">
+        <div Id="list">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>İsim</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody Id="myTbody">
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#brand" >Yeni Marka</button>
+        @* Modal *@
+        <div Id="brand" class="modal" role="dialog">
+            <div class="modal-dialog">
+                @* Content *@
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Marka İşlem</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form Id="frmbrand">
+                            <div class="formbrand" style="display:none">
+                                <label for="txtId">Id</label>
+                                <input type="text" placeholder="Id" Id="txtId" class="form-control" />
+                            </div>
+                            <div class="formbrand">
+                                <label for="txtName">İsim</label>
+                                <input type="text" placeholder="İsim" Id="txtName" class="form-control" />
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Kapat</button>
+                        <button Id="btnAdd" class="btn btn-default" onclick="Add()">Ekle</button>
+                        <button Id="btnUpdate" class="btn btn-default" onclick="Update()" style="display:none;">Güncelle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(GetAll());
+        function NewBrand() {
+            $('#btnUpdate').hide();
+            $('#btnAdd').show();
+            $('#txtName').val(null);
+        }
+        function Add() {
+
+            $.ajax({
+                url: "/Admin/Brand1/Add",
+                data: {
+                    ID: $('#txtId').val(),
+                    Name: $('#txtName').val(),
+
+                },
+                type: "get",
+                contentType: "application/json;charset=utf-8", // Verinin hangi tipte yollanacağı
+                dataType: "json",
+                success: function (result) {
+                    alert(result);
+                    GetAll();
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            })
+        }
+        function GetAll() {
+           
+            $.ajax({
+                
+                url: "/Admin/Brand1/List",
+                type: "Get",
+                contentType: "application/json;charset=utf-8", // Verinin hangi tipte yollanacağı
+                dataType: "json",
+                success: function (result) {
+                    var html;
+                    $.each(result, function (index, item) {
+                        html += '<tr>';
+                        html += '<td>' + item.ID + '</td>';
+                        html += '<td>' + item.Name + '</td>';
+                       
+                        html += '<td><a href="#" onclick="GetById(' + item.ID + ')" data-toggle="modal" data-target="#brand">Güncelle</a> &empty; <a href="#" onclick="Delete(' + item.ID + ')">Sil</a></td>';
+                        html += '</tr>';
+                    })
+                    $('#myTbody').html(html);
+                },
+                error: function (hata) {
+                    alert(hata);
+                }
+            })
+        }
+        function GetById(Id) {
+            $('#btnUpdate').show();
+            $('#btnAdd').hide();
+
+            $.ajax({
+                url: "/Admin/Brand1/GetById/" + Id,
+                type: "get",
+                contentType: "json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $('#txtId').val(result.ID);
+                    $('#txtName').val(result.Name);
+
+                },
+                error: function (result) {
+
+                }
+            })
+        }
+        function Update() {
+            var Brand = {
+                ID: $("#txtId").val(),
+                Name: $("#txtName").val(),
+
+            }
+            $.ajax({
+                url: "/Admin/Brand1/Update",
+                data: JSON.stringify(Brand),
+                type: "post",
+                contentType: "application/json;charset=utf-8", // Verinin hangi tipte yollanacağı
+                dataType: "json",
+                success: function (result) {
+                    GetAll();
+                    alert(result + "Güncelleme başarılı");
+
+                },
+                error: function () {
+                    alert("Hata !");
+                }
+            })
+        }
+        function Delete(Id) {
+            $.ajax({
+                url: "/Admin/Brand1/Delete/" + Id,
+                type: "post",
+                contentType: "application/json;charset=utf-8", // Verinin hangi tipte yollanacağı
+                dataType: "json",
+                success: function () {
+                    GetAll();
+                    alert(result);
+
+                },
+                error: function () {
+                    alert("Hata!");
+                }
+            })
+        }
+    </script>
+</body>
+</html>

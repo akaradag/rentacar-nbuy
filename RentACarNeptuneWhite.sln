@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Entities", "01-Entities", "{C2C992AC-B2D2-44B5-AD75-5B3EF6E017AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{E31CF409-854A-402F-B000-E7B56F1315C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-DAL", "02-DAL", "{7B15FF72-F2F9-44EB-91A0-DA26ECE3DDCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{B1284458-F0C6-4B66-9220-18BB83127C9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-BLL", "03-BLL", "{AF430EC9-4BE2-4B82-92CB-7C4FB0D38D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{33B017F4-8BCF-4BCF-B6F5-D306D2835FEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-UI", "04-UI", "{4455A7BA-D54D-4F80-B21E-7EAC7CA35A58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar", "RentACar\RentACar.csproj", "{26DDB6BA-D18C-4CCA-9A46-FCEF0E150895}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E31CF409-854A-402F-B000-E7B56F1315C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31CF409-854A-402F-B000-E7B56F1315C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31CF409-854A-402F-B000-E7B56F1315C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31CF409-854A-402F-B000-E7B56F1315C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1284458-F0C6-4B66-9220-18BB83127C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1284458-F0C6-4B66-9220-18BB83127C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1284458-F0C6-4B66-9220-18BB83127C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1284458-F0C6-4B66-9220-18BB83127C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B017F4-8BCF-4BCF-B6F5-D306D2835FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B017F4-8BCF-4BCF-B6F5-D306D2835FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B017F4-8BCF-4BCF-B6F5-D306D2835FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B017F4-8BCF-4BCF-B6F5-D306D2835FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26DDB6BA-D18C-4CCA-9A46-FCEF0E150895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26DDB6BA-D18C-4CCA-9A46-FCEF0E150895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26DDB6BA-D18C-4CCA-9A46-FCEF0E150895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26DDB6BA-D18C-4CCA-9A46-FCEF0E150895}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E31CF409-854A-402F-B000-E7B56F1315C3} = {C2C992AC-B2D2-44B5-AD75-5B3EF6E017AF}
+		{B1284458-F0C6-4B66-9220-18BB83127C9B} = {7B15FF72-F2F9-44EB-91A0-DA26ECE3DDCC}
+		{33B017F4-8BCF-4BCF-B6F5-D306D2835FEA} = {AF430EC9-4BE2-4B82-92CB-7C4FB0D38D68}
+		{26DDB6BA-D18C-4CCA-9A46-FCEF0E150895} = {4455A7BA-D54D-4F80-B21E-7EAC7CA35A58}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://rentacarneptunewhite1.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Entities\\Entities.csproj
+		SccProjectTopLevelParentUniqueName1 = RentACarNeptuneWhite.sln
+		SccProjectName1 = Entities
+		SccLocalPath1 = Entities
+		SccProjectUniqueName2 = DataAccessLayer\\DataAccessLayer.csproj
+		SccProjectTopLevelParentUniqueName2 = RentACarNeptuneWhite.sln
+		SccProjectName2 = DataAccessLayer
+		SccLocalPath2 = DataAccessLayer
+		SccProjectUniqueName3 = BusinessLayer\\BusinessLayer.csproj
+		SccProjectTopLevelParentUniqueName3 = RentACarNeptuneWhite.sln
+		SccProjectName3 = BusinessLayer
+		SccLocalPath3 = BusinessLayer
+		SccProjectUniqueName4 = RentACar\\RentACar.csproj
+		SccProjectTopLevelParentUniqueName4 = RentACarNeptuneWhite.sln
+		SccProjectName4 = RentACar
+		SccLocalPath4 = RentACar
+	EndGlobalSection
+EndGlobal

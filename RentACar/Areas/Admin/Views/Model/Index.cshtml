@@ -1,0 +1,102 @@
+﻿@model Entities.Model
+@{
+    ViewBag.Title = "Index";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+   
+</head>
+<body>
+
+    <div id="list">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>İsim</th>
+                    <th>Marka</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody id="myTbody"></tbody>
+        </table>
+    </div>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#model">Yeni Model</button>
+    <div id="model" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Model işlem</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmModel">
+                       
+                        <div class="formModel" style="display:none">
+                            <label for="txtID">ID</label>
+                            <input type="text" placeholder="ID" id="txtID" class="form-control" />
+                        </div>
+                        <div class="formModel">
+                            <label for="txtName">İsim</label>
+                            <input type="text" placeholder="İsim" id="txtName" class="form-control" />
+
+                        </div>
+                        <div class="formModel">
+                            @Html.LabelFor(x => x.BrandID, "Marka")
+                            @Html.DropDownListFor(x => x.BrandID,
+                           (SelectList)ViewBag.List, new { @class = "form-control" })
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Kapat
+                    </button>
+                    <button id="btnAdd" type="button" class="btn btn-default" onclick="Add()">
+                        Ekle
+                    </button>
+                    <button id="btnUpdate" type="button" class="btn btn-default" onclick="Update()" style="display:none;">Güncelle</button>
+                </div>
+
+            </div>
+
+            </div>
+
+        </div>
+    <script>
+        function Add()
+        {
+            $.ajax({
+                url: "/Admin/Model/Add",
+                data: {
+                    ID: $("#txtID").val(),
+                    Name: $("#txtName").val(),
+                    BrandID:$('#')
+                },
+                type: "get",
+                contentType: "application/json;charset=utf-8", // Verinin hangi tipte yollacağı
+                dataType: "json",
+                success: function (result) {
+                    alert(result);
+                    GetAll();
+                },
+                error: function (result) {
+                    alert(result);
+                    alert("Hata");
+                }
+            })
+
+        }
+
+    </script>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        .nav-top {
+            margin-bottom: 0;
+        }
+
+        .logo {
+            width: 190px;
+            height: 75px;
+        }
+
+        #menu ul {
+            padding-top: 13px;
+        }
+
+        #menu li {
+            margin-right: 5px;
+        }
+
+        .footer-top {
+            background: #000;
+            color: #FFF;
+            padding: 10px 20px;
+            line-height: 30px;
+            height: 50px;
+        }
+
+        footer .logo {
+            width: 100px;
+            height: 35px;
+        }
+
+        .signature {
+            text-align: center;
+        }
+
+            .signature a {
+                text-decoration: none;
+                transition: all 0.2s ease-in-out;
+                color: #666;
+            }
+        /* (/Car1/CarSelect) */
+        .car-div {
+            margin-bottom: 15px;
+            border-bottom: 1px dotted;
+            padding-bottom: 30px;
+        }
+
+            .car-div img {
+                padding-top: 25px;
+            }
+
+        .car-option {
+            background-color: #f5f5f5;
+            margin: 10px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .car-option-img {
+            float: left;
+            margin-right: 5px;
+            background: #006cff;
+            border-radius: 40%;
+            color: #f5f5f5;
+            padding: 2px;
+        }
+        /* (/Rent/Index) */
+        .img-box {
+            text-align: center;
+        }
+
+        .rent-info {
+            position: fixed;
+            width: 17.3%;
+        }
+    </style>
+</head>
+<body class="container">
+    <header>
+        <nav class="navbar navbar-inverse nav-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="collapse navbar-collapse">
+                        <a class="navbar-brand">Lorem Ipsum Türkiye Araç Kiralama | 4444444</a>
+                    </div>
+                </div>
+                @*<ul class="nav navbar-nav navbar-right">
+                        <li><a href="~/SignUp/Index"><span class="glyphicon glyphicon-user"></span> Üye Ol</a></li>
+                        <li><a href="~/Login/Index"><span class="glyphicon glyphicon-log-in"></span> Giriş Yap</a></li>
+                    </ul>*@
+                @if (Session["LoginId"] == null)
+                {
+                    @Html.Partial("_PartialView")
+                }
+                else
+                {
+
+                    <h4 style="color:beige; text-align:right">Hoşgeldin @Session["CustomerName"] @Session["CustomerLastName"] @Html.ActionLink("Logout", "Logout", "Login")</h4>
+
+
+                }
+
+            </div>
+        </nav>
+        <nav class="navbar navbar-default nav-bot">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <img class="logo" src="~/Assets/c-logo.png" />
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="~/Home"><span class="glyphicon glyphicon-home"></span></a></li>
+                        <li><a href="#">Page 1</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        @RenderBody()
+    </section>
+    <footer>
+        <div class="footer-top">
+            <div class="pull-left">
+                <label>Dolor Sit Amet A.Ş. &copy; - 1990 - @DateTime.Now.Year </label>
+            </div>
+            <div class="pull-right">
+                <img class="logo" src="~/Assets/c-logo.png" />
+            </div>
+        </div>
+        <div class="signature">
+            <a href="#">Site Created By White Team Interactive</a>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(function () {
+                var bindDatePicker = function () {
+                    $(".date").datetimepicker({
+                        format: 'DD-MM-YYYY',
+                        icons: {
+                            time: "fa fa-clock-o",
+                            date: "fa fa-calendar",
+                            up: "fa fa-arrow-up",
+                            down: "fa fa-arrow-down",
+                            useCurrent: false //Important! See issue #1075
+                        }
+                    }).find('input:first').on("blur", function () {
+                        // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+                        // update the format if it's yyyy-mm-dd
+                        var date = parseDate($(this).val());
+
+                        if (!isValidDate(date)) {
+                            //create date based on momentjs (we have that)
+                            date = moment().format('DD-MM-YYYY');
+                        }
+
+                        $(this).val(date);
+                    });
+                }
+
+                var isValidDate = function (value, format) {
+                    format = format || false;
+                    // lets parse the date to the best of our knowledge
+                    if (format) {
+                        value = parseDate(value);
+                    }
+
+                    var timestamp = Date.parse(value);
+
+                    return isNaN(timestamp) == false;
+                }
+
+                var parseDate = function (value) {
+                    var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+                    if (m)
+                        value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+
+                    return value;
+                }
+
+                bindDatePicker();
+            });
+        });
+
+        $(function () {
+            $("#datetimepicker1").on("dp.change", function (e) {
+                $('#datetimepicker2').data("DateTimePicker").setMinDate(e.date.add(1, 'days'));
+            });
+            $("#datetimepicker2").on("dp.change", function (e) {
+                $('#datetimepicker1').data("DateTimePicker").setMaxDate(e.date.subtract(1, 'days'))
+            });
+        });
+
+    </script>
+    @RenderSection("rent_indexScript", false)
+</body>
+</html>

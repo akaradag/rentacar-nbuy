@@ -1,0 +1,35 @@
+﻿@model RentACar.Models.RentDatesVM
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class='col-sm-4'>
+        <form action="~/Car1/CarSelect" method="get">
+            <div class="form-group">
+                <label>Alış Tarihi</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' name="StartingDate" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Teslim Tarihi</label>
+                <div class="input-group date" id="datetimepicker2">
+                    <input type="text" name="EndingDate" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group pull-right">
+                <input type="submit" class="btn btn-success" value="Onayla"/>
+            </div>
+        </form>
+    </div>
+</div>
